@@ -1,8 +1,9 @@
 import { useState, useEffect } from 'react';
-import { getTrendingMovies } from 'components/services/api';
-import { smoothScroll } from 'components/utils/smoothScroll';
+import { getTrendingMovies } from 'services/api';
+import { smoothScroll } from 'utils/smoothScroll';
 import Loader from 'components/Loader/Loader';
 import MoviesList from 'components/MoviesList/MoviesList';
+import styles from './Movies.module.css';
 
 const Movies = () => {
   const [films, setFilms] = useState([]);
@@ -40,7 +41,7 @@ const Movies = () => {
       {error && <p>Error</p>}
       {<MoviesList films={films} />}
       {isVisible && (
-        <button type="button" onClick={LoadMore}>
+        <button className={styles.btnLm} type="button" onClick={LoadMore}>
           Load More
         </button>
       )}
