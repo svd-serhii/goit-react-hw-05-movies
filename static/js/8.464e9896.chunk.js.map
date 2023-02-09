@@ -1,0 +1,1 @@
+{"version":3,"file":"static/js/8.464e9896.chunk.js","mappings":"yIACA,UADyB,WAAQ,C","sources":["pages/MovieReviewsPage/MovieReviewsPage.jsx"],"sourcesContent":["const MovieReviewsPage = () => {};\nexport default MovieReviewsPage;\n"],"names":[],"sourceRoot":""}
