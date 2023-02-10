@@ -8,7 +8,7 @@ const instance = axios.create({
 });
 
 export const getTrendingMovies = async page => {
-  const { data } = await instance.get(`/trending/all/day?`, {
+  const { data } = await instance.get(`/trending/movie/day?`, {
     params: {
       page,
     },

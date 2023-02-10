@@ -14,6 +14,12 @@ code {
     monospace;
 }
 
+*,
+::after,
+::before {
+  box-sizing: border-box;
+}
+
 h1,
 h2,
 h3,
@@ -39,4 +45,19 @@ ul {
 
 ul {
   list-style: none;
+}
+
+header {
+  padding: 20px 0;
+  box-shadow: 0 1px 1px rgb(0 0 0 / 20%);
+}
+
+.container {
+  margin: 0 auto;
+  max-width: 1140px;
+  padding: 0 20px;
+}
+
+main {
+  padding: 20px 0;
 }

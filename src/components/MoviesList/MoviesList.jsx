@@ -6,7 +6,7 @@ import defaultImg from '../../images/default_poster.jpg';
 const MoviesList = ({ films }) => {
   const location = useLocation();
   const items = films.map(({ id, title, poster_path }) => (
-    <li key={id}>
+    <li key={id} className={styles.trendItem}>
       <Link state={{ from: location }} to={`/movies/${id}`}>
         <img
           src={
@@ -16,6 +16,7 @@ const MoviesList = ({ films }) => {
           }
           alt={title}
           className={styles.moviePoster}
+          loading="lazy"
         ></img>
         <p className={styles.movieTitle}>{title} </p>
       </Link>

@@ -1,0 +1,27 @@
+.nav {
+  display: flex;
+  justify-content: center;
+}
+
+.menu {
+  display: flex;
+  gap: 30px;
+}
+
+.link {
+  display: inline-block;
+  border-radius: 10px;
+  padding: 8px 24px;
+  background-color: rgba(215, 213, 213, 0.392);
+  transition: ease-in 250ms;
+}
+
+.link:hover {
+  color: #3194d1;
+  scale: 1.05;
+}
+
+.active {
+  background-color: #3194d1;
+  color: #fff;
+}
