@@ -9,9 +9,9 @@ const getFullName = ({ isActive }) => {
 };
 
 const Navbar = () => {
-  const elements = items.map(({ id, text, link }) => (
+  const elements = items.map(({ id, text, to }) => (
     <li key={id}>
-      <NavLink className={getFullName} to={link}>
+      <NavLink className={getFullName} to={to}>
         {text}
       </NavLink>
     </li>

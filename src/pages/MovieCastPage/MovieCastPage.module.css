@@ -1,0 +1,25 @@
+.cast__list {
+  display: flex;
+  gap: 30px;
+  margin-top: 20px;
+  flex-wrap: wrap;
+  justify-content: space-around;
+  padding: 0;
+}
+
+.cast__item {
+  background-color: white;
+  display: flex;
+  flex-direction: column;
+  width: 230px;
+  border-radius: 4px;
+  padding: 10px;
+  box-shadow: 0px 1px 3px rgb(0 0 0 / 12%), 0px 1px 1px rgb(0 0 0 / 14%),
+    0px 2px 1px rgb(0 0 0 / 20%);
+  font-size: 16px;
+  font-weight: 400;
+}
+
+.cast__img {
+  margin-bottom: 10px;
+}

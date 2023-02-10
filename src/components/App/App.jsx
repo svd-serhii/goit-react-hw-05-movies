@@ -1,6 +1,9 @@
 import Navbar from 'components/Menu/Menu';
 import UserRoutes from 'UserRoutes';
 
+import { ToastContainer } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
+
 export const App = () => {
   return (
     <>
@@ -10,6 +13,7 @@ export const App = () => {
       <main>
         <UserRoutes />
       </main>
+      <ToastContainer autoClose={2500} theme="colored" />
     </>
   );
 };
