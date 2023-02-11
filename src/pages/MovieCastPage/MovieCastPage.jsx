@@ -31,23 +31,25 @@ const MovieCastPage = () => {
   }, [id]);
 
   const elements = cast.map(
-    ({ id, name, original_name, profile_path, character }) => (
-      <li className={styles.cast__item} key={id}>
-        <img
-          className={styles.cast__img}
-          src={
-            profile_path === null
-              ? defaultImg
-              : `https://image.tmdb.org/t/p/w300/${profile_path}`
-          }
-          alt={name ?? original_name}
-          loading="lazy"
-        />
-        {name ?? original_name}
+    ({ id, name, original_name, profile_path, character }, idx) => {
+      return (
+        <li className={styles.cast__item} key={id + idx}>
+          <img
+            className={styles.cast__img}
+            src={
+              profile_path === null
+                ? defaultImg
+                : `https://image.tmdb.org/t/p/w300/${profile_path}`
+            }
+            alt={name ?? original_name}
+            loading="lazy"
+          />
+          {name ?? original_name}
 
-        <p className={styles.cast__char}>Character: {character}</p>
-      </li>
-    )
+          <p className={styles.cast__char}>Character: {character}</p>
+        </li>
+      );
+    }
   );
   return (
     <>

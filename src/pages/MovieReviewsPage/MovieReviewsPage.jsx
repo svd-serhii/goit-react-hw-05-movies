@@ -5,10 +5,9 @@ import Loader from 'components/Loader/Loader';
 import { toast } from 'react-toastify';
 
 import { getMovieReviews } from '../../services/api';
-// import defaultImg from '../../images/default_poster.jpg';
 
 const MovieReviewsPage = () => {
-  const [reviews, setReview] = useState([]);
+  const [reviews, setReviews] = useState([]);
   const [isLoading, setIsLoading] = useState(false);
   const [error, setError] = useState(null);
 
@@ -19,9 +18,11 @@ const MovieReviewsPage = () => {
       setIsLoading(true);
       try {
         const result = await getMovieReviews(id);
-        setReview(result);
+        setReviews([...result]);
+        if (!result.length) {
+          toast.warn('There is no review about this movie');
+        }
       } catch (error) {
-        toast.error(error.message);
         setError(error.message);
       } finally {
         setIsLoading(false);
@@ -39,13 +40,8 @@ const MovieReviewsPage = () => {
   return (
     <>
       {isLoading && <Loader />}
-      {error && <p>Unexpected error. Please try again later.</p>}
-      {reviews.length > 0 && (
-        <ul className={styles.review__list}>{elements}</ul>
-      )}
-      {reviews.length === 0 && (
-        <p className={styles.errorMsg}>There is no review about this movie</p>
-      )}
+      {error && toast.error('Something goes wrong. Please try again later.')}
+      <ul className={styles.review__list}>{elements}</ul>
     </>
   );
 };

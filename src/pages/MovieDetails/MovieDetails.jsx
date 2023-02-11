@@ -1,10 +1,11 @@
+import PropTypes from 'prop-types';
 import { useState, useEffect } from 'react';
 import { Suspense } from 'react';
 import {
   useLocation,
   useNavigate,
   useParams,
-  NavLink,
+  Link,
   Outlet,
 } from 'react-router-dom';
 import { getMovieDetails } from '../../services/api';
@@ -80,30 +81,41 @@ const MovieDetails = () => {
         <h2 className={styles.addInfo__title}>Additional Information</h2>
         <ul className={styles.addInfo__list}>
           <li className={styles.addInfo__item}>
-            <NavLink
+            <Link
               state={{ from }}
               to={`/movies/${id}/credits`}
               className={getFullName}
             >
               Cast
-            </NavLink>
+            </Link>
           </li>
           <li className={styles.addInfo__item}>
-            <NavLink
+            <Link
               state={{ from }}
               to={`/movies/${id}/reviews`}
               className={getFullName}
             >
               Reviews
-            </NavLink>
+            </Link>
           </li>
         </ul>
       </div>
-      <Suspense fallback={<Loader />}>
+      <Suspense fallback={null}>
         <Outlet />
       </Suspense>
     </div>
   );
+};
+
+MovieDetails.propTypes = {
+  film: PropTypes.shape({
+    id: PropTypes.string.isRequired,
+    original_title: PropTypes.string.isRequired,
+    genres: PropTypes.string.isRequired,
+    vote_average: PropTypes.string.isRequired,
+    overview: PropTypes.string.isRequired,
+    poster_path: PropTypes.string.isRequired,
+  }),
 };
 
 export default MovieDetails;
