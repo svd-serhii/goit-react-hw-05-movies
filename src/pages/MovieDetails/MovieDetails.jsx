@@ -53,7 +53,7 @@ const MovieDetails = () => {
   return (
     <div className="container">
       {isLoading && <Loader />}
-      {error && <p>Unexpected error. Please try again later.</p>}
+      {error && <p>Something goes wrong. Please try again later.</p>}
       <button type="button" onClick={goBack} className={styles.btnBack}>
         Go back
       </button>

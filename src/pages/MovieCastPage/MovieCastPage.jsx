@@ -54,11 +54,12 @@ const MovieCastPage = () => {
   return (
     <>
       {isLoading && <Loader />}
-      {error && <p>Unexpected error. Please try again later.</p>}
+      {error && <p>Something goes wrong. Please try again later.</p>}
       {cast.length > 0 && <ul className={styles.castList}>{elements}</ul>}
-      {!error && !isLoading && cast.length === 0 && (
-        <p className={styles.errorMsg}>There is no information about cast</p>
-      )}
+      {!error &&
+        !isLoading &&
+        cast.length === 0 &&
+        toast.warn('There is no information about cast')}
     </>
   );
 };

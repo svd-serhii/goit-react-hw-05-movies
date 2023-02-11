@@ -17,8 +17,7 @@
 }
 
 .link:hover {
-  color: #3194d1;
-  scale: 1.05;
+  scale: 1.2;
 }
 
 .active {

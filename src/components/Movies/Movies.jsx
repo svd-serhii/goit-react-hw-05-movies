@@ -4,13 +4,13 @@ import { smoothScroll } from 'utils/smoothScroll';
 import Loader from 'components/Loader/Loader';
 import MoviesList from 'components/MoviesList/MoviesList';
 import styles from './Movies.module.css';
+import { toast } from 'react-toastify';
 
 const Movies = () => {
   const [films, setFilms] = useState([]);
   const [page, setPage] = useState(1);
   const [error, setError] = useState(null);
   const [isLoading, setIsLoading] = useState(false);
-  const [isVisible, setIsVisible] = useState(false);
 
   useEffect(() => {
     const api = async () => {
@@ -21,10 +21,11 @@ const Movies = () => {
           return setFilms([...data.results]);
         }
         setFilms(prevFilms => [...prevFilms, ...data.results]);
-        setIsVisible(data.page < Math.ceil(data.total_results / data.per_page));
+
         smoothScroll();
       } catch (error) {
         setError(error.message);
+        toast.error(error.message);
       } finally {
         setIsLoading(false);
       }
@@ -38,11 +39,11 @@ const Movies = () => {
   return (
     <>
       {isLoading && <Loader />}
-      {error && <p>Error</p>}
+      {error && <p> ...error</p>}
       {<MoviesList films={films} />}
-      {isVisible && (
+      {films.length > 0 && (
         <button className={styles.btnLm} type="button" onClick={LoadMore}>
-          Load More
+          Load more
         </button>
       )}
     </>
