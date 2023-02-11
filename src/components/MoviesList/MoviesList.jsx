@@ -6,7 +6,7 @@ import defaultImg from '../../images/default_poster.jpg';
 const MoviesList = ({ films }) => {
   const location = useLocation();
   const items = films.map(({ id, title, poster_path }) => (
-    <li key={id} className={styles.trendItem}>
+    <li key={id} className={styles.filmsItem}>
       <Link state={{ from: location }} to={`/movies/${id}`}>
         <img
           src={
@@ -22,7 +22,7 @@ const MoviesList = ({ films }) => {
       </Link>
     </li>
   ));
-  return <ul className={styles.trendList}>{items} </ul>;
+  return <ul className={styles.filmsList}>{items} </ul>;
 };
 
 MoviesList.propTypes = {

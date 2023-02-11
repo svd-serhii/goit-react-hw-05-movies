@@ -24,14 +24,14 @@ const SearchForm = ({ onSubmit }) => {
 
   return (
     <div className={styles.formWrap}>
-      <form className={styles.SearchForm} onSubmit={handleSubmit}>
-        <button type="submit" className={styles.SearchFormButton}>
+      <form className={styles.searchForm} onSubmit={handleSubmit}>
+        <button type="submit" className={styles.searchFormButton}>
           <FaSistrix size={20} />
-          <span className={styles.SearchFormButtonLabel}></span>
+          <span className={styles.searchFormButtonLabel}></span>
         </button>
 
         <input
-          className={styles.SearchFormInput}
+          className={styles.searchFormInput}
           type="text"
           name="request"
           autoComplete="off"
