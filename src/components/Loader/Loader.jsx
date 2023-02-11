@@ -8,7 +8,7 @@ function Loader() {
         strokeColor="#3194d1"
         strokeWidth="5"
         animationDuration="0.75"
-        width="50"
+        width="30"
         visible={true}
       />
     </div>

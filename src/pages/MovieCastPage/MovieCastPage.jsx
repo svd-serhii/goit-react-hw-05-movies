@@ -20,6 +20,9 @@ const MovieCastPage = () => {
       try {
         const result = await getMovieCredits(id);
         setCast([...result.cast]);
+        if (result.cast.length === 0) {
+          toast.warn('There is no information about cast');
+        }
       } catch (error) {
         toast.error(error.message);
         setError(error.message);
@@ -56,10 +59,6 @@ const MovieCastPage = () => {
       {isLoading && <Loader />}
       {error && <p>Something goes wrong. Please try again later.</p>}
       {cast.length > 0 && <ul className={styles.castList}>{elements}</ul>}
-      {!error &&
-        !isLoading &&
-        cast.length === 0 &&
-        toast.warn('There is no information about cast')}
     </>
   );
 };

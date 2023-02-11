@@ -19,7 +19,7 @@ const MovieReviewsPage = () => {
       try {
         const response = await getMovieReviews(id);
         setReviews([...response.results]);
-        if (response.length === 0) {
+        if (response.results.length === 0) {
           toast.warn('There is no review about this movie');
         }
       } catch (error) {

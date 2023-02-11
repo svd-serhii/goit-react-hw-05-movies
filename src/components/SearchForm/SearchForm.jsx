@@ -33,7 +33,7 @@ const SearchForm = ({ onSubmit }) => {
         <input
           className={styles.searchFormInput}
           type="text"
-          name="request"
+          name="search"
           autoComplete="off"
           autoFocus
           value={request}

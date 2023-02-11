@@ -1,5 +1,3 @@
-import PropTypes from 'prop-types';
-
 import { useState, useEffect } from 'react';
 import { useSearchParams } from 'react-router-dom';
 
@@ -8,7 +6,7 @@ import { getMovieByQuery } from '../../services/api';
 import MoviesList from 'components/MoviesList/MoviesList';
 import SearchForm from 'components/SearchForm/SearchForm';
 import Loader from 'components/Loader/Loader';
-import { smoothScroll } from '../../utils/smoothScroll';
+// import { smoothScroll } from '../../utils/smoothScroll';
 import { toast } from 'react-toastify';
 
 const MoviesPage = () => {
@@ -21,20 +19,14 @@ const MoviesPage = () => {
 
   useEffect(() => {
     const fetchMovies = async () => {
+      // if (!search) {
+      //   return;
+      // }
       setIsLoading(true);
-
       try {
-        const { response } = await getMovieByQuery(search);
-        setFilms([...response.results]);
-        if (response.length === 0) {
-          setFilms([]);
-          setIsLoading(false);
-          toast.warn('No search results . Please try something else');
-
-          return Promise.reject(
-            new Error(`There is no movie with name ${search}`)
-          );
-        }
+        const { results } = await getMovieByQuery(search);
+        setFilms([...results]);
+        setIsLoading(false);
       } catch (error) {
         toast.warn(`${error.message}`);
         setError(error.message);
@@ -47,33 +39,24 @@ const MoviesPage = () => {
     }
   }, [search, error]);
 
-  useEffect(() => {
-    if (films.length > 20) {
-      smoothScroll();
-    }
-  }, [films]);
-
   const handleSearchSubmit = searchText => {
     if (search !== searchText) {
-      setSearchParams({ search: searchText });
+      setSearchParams({ search });
       setFilms([]);
       setError(null);
+      setIsLoading(false);
     }
   };
 
   return (
     <div className="container">
       <h1 className="mainTitle">Search movie</h1>
-      <SearchForm onSubmit={handleSearchSubmit} />
-      {films.length > 0 && <MoviesList films={films} />}
       {isLoading && <Loader />}
       {error && <p>Something goes wrong. Please try again later.</p>}
+      <SearchForm onSubmit={handleSearchSubmit} />
+      {<MoviesList films={films} />}
     </div>
   );
-};
-
-MoviesPage.propTypes = {
-  films: PropTypes.array.isRequired,
 };
 
 export default MoviesPage;
