@@ -7,43 +7,43 @@
   gap: 20px;
 }
 
-.film__poster {
+.filmPoster {
   border-radius: 4px;
 }
-.film__info {
+.filmInfo {
   text-align: justify;
 }
-.film__title {
+.filmTitle {
   font-size: 26px;
   font-weight: 900;
   margin: 0 0 20px;
   line-height: 1.15;
 }
-.film__score {
+.filmScore {
   font-size: 16px;
   font-weight: 400;
   line-height: 1.09;
   margin: 0 0 20px;
 }
 
-.film__titleOverview,
-.film__titleGenres,
-.addInfo__title {
+.filmTitleOverview,
+.filmTitleGenres,
+.addInfoTitle {
   font-size: 20px;
   line-height: 1.1;
   font-weight: 700;
   margin-bottom: 5px;
 }
 
-.film__textOverview,
-.film__listGenres {
+.filmTextOverview,
+.filmListGenres {
   font-size: 16px;
   line-height: 1.09;
   font-weight: 400;
   margin-bottom: 20px;
 }
 
-.btn__back {
+.btnBack {
   border-radius: 10px;
   cursor: pointer;
   padding: 8px 16px;
@@ -53,17 +53,17 @@
   transition: ease-in 250ms;
 }
 
-.btn__back:hover {
+.btnBack:hover {
   background-color: #3194d1;
   color: white;
 }
 
-.addInfo__container {
+.addInfoContainer {
   padding: 20px;
   margin-top: 20px;
 }
 
-.addInfo__list {
+.addInfoList {
   margin-top: 20px;
   display: flex;
   gap: 30px;

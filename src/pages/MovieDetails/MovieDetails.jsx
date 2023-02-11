@@ -5,7 +5,7 @@ import {
   useLocation,
   useNavigate,
   useParams,
-  Link,
+  NavLink,
   Outlet,
 } from 'react-router-dom';
 import { getMovieDetails } from '../../services/api';
@@ -54,7 +54,7 @@ const MovieDetails = () => {
     <div className="container">
       {isLoading && <Loader />}
       {error && <p>Unexpected error. Please try again later.</p>}
-      <button type="button" onClick={goBack} className={styles.btn__back}>
+      <button type="button" onClick={goBack} className={styles.btnBack}>
         Go back
       </button>
       <div className={styles.filmCard}>
@@ -66,37 +66,37 @@ const MovieDetails = () => {
           }
           alt={film.original_title}
           width="270"
-          className={styles.film__poster}
+          className={styles.filmPoster}
         />
-        <div className={styles.film__info}>
-          <h2 className={styles.film__title}>{film.original_title}</h2>
-          <p className={styles.film__score}>User score: {film.vote_average}</p>
-          <h3 className={styles.film__titleOverview}>Overview</h3>
-          <p className={styles.film__textOverview}>{film.overview}</p>
-          <h3 className={styles.film__titleGenres}>Genres</h3>
-          <p className={styles.film__listGenres}>{genresList}</p>
+        <div className={styles.filmInfo}>
+          <h2 className={styles.filmTitle}>{film.original_title}</h2>
+          <p className={styles.filmScore}>User score: {film.vote_average}</p>
+          <h3 className={styles.filmTitleOverview}>Overview</h3>
+          <p className={styles.filmTextOverview}>{film.overview}</p>
+          <h3 className={styles.filmTitleGenres}>Genres</h3>
+          <p className={styles.filmListGenres}>{genresList}</p>
         </div>
       </div>
-      <div className={styles.addInfo__container}>
-        <h2 className={styles.addInfo__title}>Additional Information</h2>
-        <ul className={styles.addInfo__list}>
-          <li className={styles.addInfo__item}>
-            <Link
+      <div className={styles.addInfoContainer}>
+        <h2 className={styles.addInfoTitle}>Additional Information</h2>
+        <ul className={styles.addInfoList}>
+          <li className={styles.addInfoItem}>
+            <NavLink
               state={{ from }}
               to={`/movies/${id}/credits`}
               className={getFullName}
             >
               Cast
-            </Link>
+            </NavLink>
           </li>
-          <li className={styles.addInfo__item}>
-            <Link
+          <li className={styles.addInfoItem}>
+            <NavLink
               state={{ from }}
               to={`/movies/${id}/reviews`}
               className={getFullName}
             >
               Reviews
-            </Link>
+            </NavLink>
           </li>
         </ul>
       </div>

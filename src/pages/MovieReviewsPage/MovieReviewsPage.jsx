@@ -17,9 +17,9 @@ const MovieReviewsPage = () => {
     const fetchReview = async () => {
       setIsLoading(true);
       try {
-        const result = await getMovieReviews(id);
-        setReviews([...result]);
-        if (!result.length) {
+        const response = await getMovieReviews(id);
+        setReviews([...response.results]);
+        if (response.length === 0) {
           toast.warn('There is no review about this movie');
         }
       } catch (error) {
@@ -31,17 +31,19 @@ const MovieReviewsPage = () => {
     fetchReview();
   }, [id]);
 
-  const elements = reviews.map(({ id, author, content }) => (
-    <li className={styles.review__item} key={id}>
-      <p className={styles.review__author}>Author:{author}</p>
-      <p className={styles.review__text}>{content}</p>
-    </li>
-  ));
+  const elements = reviews.map(({ id, author, content }, idx) => {
+    return (
+      <li className={styles.reviewItem} key={id + idx}>
+        <p className={styles.reviewAuthor}>Author: {author}</p>
+        <p className={styles.reviewText}>{content}</p>
+      </li>
+    );
+  });
   return (
     <>
       {isLoading && <Loader />}
-      {error && toast.error('Something goes wrong. Please try again later.')}
-      <ul className={styles.review__list}>{elements}</ul>
+      {error && <p>Something goes wrong. Please try again later.</p>}
+      <ul className={styles.reviewList}>{elements}</ul>
     </>
   );
 };

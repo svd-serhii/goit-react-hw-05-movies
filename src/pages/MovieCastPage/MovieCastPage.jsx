@@ -33,9 +33,9 @@ const MovieCastPage = () => {
   const elements = cast.map(
     ({ id, name, original_name, profile_path, character }, idx) => {
       return (
-        <li className={styles.cast__item} key={id + idx}>
+        <li className={styles.castItem} key={id + idx}>
           <img
-            className={styles.cast__img}
+            className={styles.castImg}
             src={
               profile_path === null
                 ? defaultImg
@@ -46,7 +46,7 @@ const MovieCastPage = () => {
           />
           {name ?? original_name}
 
-          <p className={styles.cast__char}>Character: {character}</p>
+          <p className={styles.castChar}>Character: {character}</p>
         </li>
       );
     }
@@ -55,7 +55,7 @@ const MovieCastPage = () => {
     <>
       {isLoading && <Loader />}
       {error && <p>Unexpected error. Please try again later.</p>}
-      {cast.length > 0 && <ul className={styles.cast__list}>{elements}</ul>}
+      {cast.length > 0 && <ul className={styles.castList}>{elements}</ul>}
       {!error && !isLoading && cast.length === 0 && (
         <p className={styles.errorMsg}>There is no information about cast</p>
       )}
