@@ -12,8 +12,8 @@ export const App = () => {
       </header>
       <main>
         <UserRoutes />
+        <ToastContainer autoClose={2500} theme="colored" />
       </main>
-      <ToastContainer autoClose={2500} theme="colored" />
     </>
   );
 };

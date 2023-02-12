@@ -1,6 +1,6 @@
 import PropTypes from 'prop-types';
 import { useState, useEffect } from 'react';
-import { Suspense } from 'react';
+
 import {
   useLocation,
   useNavigate,
@@ -100,9 +100,8 @@ const MovieDetails = () => {
           </li>
         </ul>
       </div>
-      <Suspense fallback={null}>
-        <Outlet />
-      </Suspense>
+
+      <Outlet />
     </div>
   );
 };

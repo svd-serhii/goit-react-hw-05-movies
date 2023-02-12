@@ -14,8 +14,9 @@ const MovieReviewsPage = lazy(() =>
 
 const UserRoutes = () => {
   return (
-    <Suspense fallback={null}>
+    <Suspense fallback={<div>Loading...</div>}>
       <Routes>
+        <Route path="/" element={<HomePage />} />
         <Route path="/movies" element={<MoviesPage />} />
         <Route path="/movies/:id" element={<MovieDetails />}>
           <Route path="credits" element={<MovieCastPage />} />
