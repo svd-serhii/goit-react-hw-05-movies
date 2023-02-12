@@ -41,7 +41,7 @@ const MoviesPage = () => {
 
   const handleSearchSubmit = searchText => {
     if (search !== searchText) {
-      setSearchParams({ search });
+      setSearchParams({ search: searchText });
       setFilms([]);
       setError(null);
       setIsLoading(false);
