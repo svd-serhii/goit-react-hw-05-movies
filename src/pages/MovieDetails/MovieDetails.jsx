@@ -1,5 +1,6 @@
 import PropTypes from 'prop-types';
 import { useState, useEffect } from 'react';
+import {Suspense } from 'react';
 
 import {
   useLocation,
