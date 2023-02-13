@@ -1,6 +1,6 @@
 import PropTypes from 'prop-types';
 import { useState, useEffect } from 'react';
-import {Suspense } from 'react';
+import { Suspense } from 'react';
 
 import {
   useLocation,
@@ -101,8 +101,9 @@ const MovieDetails = () => {
           </li>
         </ul>
       </div>
-
-      <Outlet />
+      <Suspense fallback={<div>Loading...</div>}>
+        <Outlet />
+      </Suspense>
     </div>
   );
 };
